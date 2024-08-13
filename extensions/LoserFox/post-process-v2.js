@@ -330,13 +330,9 @@
     SBG = able;
   }
   function bindFramebufferInfo(gl, framebufferInfo, target) {
-    target = target || gl.FRAMEBUFFER;
-    var nativeBindFramebuffer = WebGLRenderingContext.prototype.bindFramebuffer;
-    nativeBindFramebuffer.call(
-      gl,
-      target,
-      framebufferInfo ? framebufferInfo.framebuffer : null,
-    );
+      target = gl.DRAW_FRAMEBUFFER;
+      var nativeBindFramebuffer = WebGL2RenderingContext.prototype.bindFramebuffer;
+      nativeBindFramebuffer.call(gl,target,  framebufferInfo ? framebufferInfo.framebuffer : null);
   }
   function createFramebuffer(gl, attachments, width, height, target) {
     target = target || gl.FRAMEBUFFER;
